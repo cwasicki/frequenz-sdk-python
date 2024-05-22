@@ -68,6 +68,9 @@ The category [components](#component) of a [microgrid](#microgrid) belong to.
 [Components](#component) of the same category have the same characteristics
 (for example offer the same set of [metrics](#metric)).
 
+Examples of category types are meters, inverters, batteries and sensors.
+
+
 #### Battery
 
 A storage system for electrical energy.
