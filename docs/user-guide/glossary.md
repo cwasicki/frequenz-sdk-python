@@ -77,6 +77,12 @@ A storage system for electrical energy.
 A generator that produces combined heat and power ([CHP](#chp)). Usually
 powered via combustion of some form of fuel.
 
+#### Consumer
+
+This aggregates all remaining electrical energy [consumption](#consumption) in a microgrid that are not covered by other asset types and components.
+Under normal circumstances this is expected to correspond to the [gross consumption](#Gross Consumption) of the site excluding active parts and battery.
+In [Passive-sign convention](#Passive Sign Convention) consumer power is usually positive, but negative values can occur in exotic site topologies (e.g. unidentified generators) and or due to sudden short-term effects.
+
 #### Converter
 
 Generally refers to [DC-to-DC converter](#dc-to-dc-converter).
