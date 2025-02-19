@@ -344,10 +344,12 @@ class OrderedRingBuffer(Generic[FloatArray]):
         if self.count_covered() == 0:
             return np.array([]) if isinstance(self._buffer, np.ndarray) else []
 
-        # If both are indices or None convert to datetime
-        if not isinstance(start, datetime) and not isinstance(end, datetime):
-            start, end = self._to_covered_indices(start, end)
+        # If there is an int index or None convert to datetime
+        if not isinstance(start, datetime):
+            start, _ = self._to_covered_indices(start, -1)
             start = self.get_timestamp(start)
+        if not isinstance(end, datetime):
+            _, end = self._to_covered_indices(0, end)
             end = self.get_timestamp(end)
 
         # Here we should have both as datetime
