@@ -522,6 +522,15 @@ def get_orb(data: FloatArray) -> OrderedRingBuffer[FloatArray]:
 def test_window_datetime() -> None:
     """Test the window function with datetime."""
     buffer = get_orb(np.array([0, None, 2, 3, 4]))
+    # Test datetime and Nones
+    win = buffer.window(None, None)
+    assert [0, np.nan, 2, 3, 4] == list(win)
+    with pytest.raises(ValueError):
+        win = buffer.window(dt(0), None)
+        #assert [0, np.nan, 2, 3, 4] == list(win)  # should not raise
+    with pytest.raises(ValueError):
+        win = buffer.window(None, dt(4))
+        #assert [0, np.nan, 2, 3, 4] == list(win)  # should not raise
     win = buffer.window(dt(0), dt(3), force_copy=False, fill_value=None)
     assert [0, np.nan, 2] == list(win)
     buffer._buffer[1] = 1  # pylint: disable=protected-access
